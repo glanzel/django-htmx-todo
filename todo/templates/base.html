@@ -1,0 +1,13 @@
+{% load static %}
+<html lang="en">
+<head>
+  <script src="{% static 'js/htmx.min.js' %}" defer></script>
+  <script src="{% static 'js/_hyperscript.min.js' %}" defer></script>
+  {% block css %} {% endblock %}
+  {% block title %}<title>htmx page</title>{% endblock %}
+</head>
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+  {% block sidebar %}<!-- insert default navigation text for every page -->{% endblock %}
+  {% block content %}<!-- default content text (typically empty) -->{% endblock %}
+</body>
+</html>

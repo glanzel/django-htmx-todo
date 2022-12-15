@@ -1,0 +1,14 @@
+<div class="todo-list" id="todo-list">
+{% for todo in todos %}
+    <div class="todo-item">
+        <div class="checker"><span class="">
+            <form>
+                <input hx-post="/todo/toggle/" hx-swap="outerHTML" hx-target="#todo-list" type="checkbox" {%if todo.status %} checked {% endif %}>
+                <input type="hidden" name="id" value="{{todo.id}}">
+            </form>
+        </span></div>
+        <span>{{todo}}</span>
+        <a href="javascript:void(0);" hx-post="/todo/delete/" hx-swap="outerHTML" hx-target="#todo-list" hx-vars="id:{{todo.id}}" class="float-right remove-todo-item"><i class="icon-close"></i></a>
+    </div>
+{% endfor %}
+</div>
